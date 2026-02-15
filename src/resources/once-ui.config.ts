@@ -13,7 +13,7 @@ import {
 } from "@/types";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://evrenvural.me";
+const baseURL: string = "https://vuraleren.com";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -188,8 +188,8 @@ const schema: SchemaConfig = {
   logo: "",
   type: "Organization",
   name: "Once UI",
-  description: "Evren Vural's Portfolio",
-  email: "evrenvural4@gmail.com",
+  description: "Eren Vural's Portfolio",
+  email: "vuraleren8@gmail.com",
 };
 
 // social links
