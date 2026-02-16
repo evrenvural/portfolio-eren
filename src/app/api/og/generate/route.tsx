@@ -20,6 +20,21 @@ export async function GET(request: NextRequest) {
     avatar: `${new URL(request.url).origin}/images/pp-eren-bussiness.jpg`,
   };
 
+  // Fetch avatar image and convert to base64 data URL for reliable rendering
+  let avatarSrc = person.avatar;
+  try {
+    const avatarResponse = await fetch(person.avatar);
+    if (avatarResponse.ok) {
+      const arrayBuffer = await avatarResponse.arrayBuffer();
+      const base64 = Buffer.from(arrayBuffer).toString("base64");
+      const contentType = avatarResponse.headers.get("content-type") || "image/jpeg";
+      avatarSrc = `data:${contentType};base64,${base64}`;
+    }
+  } catch (e) {
+    // Fallback to URL-based src if fetch fails
+    console.error("Failed to fetch avatar for OG image:", e);
+  }
+
   return new ImageResponse(
     <div
       style={{
@@ -74,7 +89,7 @@ export async function GET(request: NextRequest) {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={person.avatar}
+            src={avatarSrc}
             alt={person.name}
             width={160}
             height={160}

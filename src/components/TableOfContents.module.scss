@@ -9,6 +9,12 @@
 }
 
 @media (max-width: breakpoints.$s) {
+  .avatar {
+    position: relative !important;
+    top: auto !important;
+    margin-bottom: var(--static-space-24);
+  }
+
   .textAlign {
     text-align: center;
   }
